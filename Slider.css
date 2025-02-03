@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.slider-images {
+    overflow: hidden;
+    width: 300px; /* Ширина блока с изображением */
+    height: 200px; /* Высота блока с изображением */
+    position: relative;
+}
+
+.slider-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.5s ease-in-out; /* Анимация при переключении */
+}
+
+.slider-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.slider-button:hover {
+    background-color: #0056b3;
+}
+
+.slider-button:focus {
+    outline: 2px solid #0056b3;
+}
+
