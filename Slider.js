@@ -1,38 +1,37 @@
-const images = [
-    'E:/Frontened-разработка/Для работы/assets/image1.jpg',
-    'E:/Frontened-разработка/Для работы/assets/image2.jpg',
-    'E:/Frontened-разработка/Для работы/assets/image3.jpg',
-    'E:/Frontened-разработка/Для работы/assets/image4.jpg',
-    'E:/Frontened-разработка/Для работы/assets/image5.jpg',
-    // Добавьте больше изображений по необходимости
-];
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const links = document.querySelectorAll('.links a');
 
-let currentIndex = 0;
+function showSlide(index) {
+    currentSlide = (index + slides.length) % slides.length;
+    const slidesContainer = document.querySelector('.slides');
+    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-const imageElement = document.getElementById('image');
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
 
-// Функция для обновления изображения
-function updateImage() {
-    imageElement.src = images[currentIndex];
-    imageElement.style.opacity = 0; // Начинаем с прозрачности 0
-    setTimeout(() => {
-        imageElement.style.opacity = 1; // Затем показываем изображение
-    }, 50); // Небольшая задержка для анимации
+    links.forEach(link => link.classList.remove('active'));
+    links[currentSlide].classList.add('active');
 }
 
-// Обработчик событий для кнопки "Назад"
-prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
-    updateImage();
+document.querySelector('.next').addEventListener('click', () => {
+    showSlide(currentSlide + 1);
 });
 
-// Обработчик событий для кнопки "Вперед"
-nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
-    updateImage();
+document.querySelector('.prev').addEventListener('click', () => {
+    showSlide(currentSlide - 1);
 });
 
-// Инициализация слайдера
-updateImage();
+dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        showSlide(parseInt(dot.dataset.index));
+    });
+});
+
+links.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSlide(parseInt(link.dataset.index));
+    });
+});
