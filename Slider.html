@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Слайдер</title>
     <link rel="stylesheet" href="Slider.css">
-    <title>Слайдер изображений</title>
 </head>
 <body>
     <div class="slider">
-        <button id="prev" class="slider-button" aria-label="Предыдущее изображение">Назад</button>
-        <div class="slider-images">
-            <img id="image" src="" alt="Изображение" />
+        <div class="slides">
+            <div class="slide active"><h1>Слайд 1</h1></div>
+            <div class="slide"><h1>Слайд 2</h1></div>
+            <div class="slide"><h1>Слайд 3</h1></div>
         </div>
-        <button id="next" class="slider-button" aria-label="Следующее изображение">Вперед</button>
+        <div class="controls">
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+        </div>
+        <div class="dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+        <div class="links">
+            <a href="#" data-index="0">Слайд 1</a>
+            <a href="#" data-index="1">Слайд 2</a>
+            <a href="#" data-index="2">Слайд 3</a>
+        </div>
     </div>
 
     <script src="Slider.js"></script>
